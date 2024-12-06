@@ -309,7 +309,18 @@ fetch_datasus <- function(year_start, month_start = NULL, year_end, month_end = 
       paste0(prelim_url,"DOMAT", substr(valid_dates[valid_dates %in% avail_prelim], 3, 4),".dbc")
     }
     files_list <- c(files_list_1, files_list_2)
-  } else if(information_system == "SIH-RD"){
+  } 
+   else if(information_system == "POP_SVS"){
+    # Available dates
+    # Fonte: Ministério de Saúde/SVS - 2000-2021 com idades simples e sexo, por município.
+    # Estimativas preliminares elaboradas pelo Ministério da Saúde/SVSA/DAENT/CGIAE
+    # Base Populacional utilizada pelo TabNET e PROADESS
+    # Formato 'dbf' separado por ano, da forma 'pop**.dbf'
+    # Esses dados são utilizado em 'http://tabnet.datasus.gov.br/cgi/deftohtm.exe?ibge/cnv/popsvsbr.def'
+    atual_url <- "ftp://ftp.datasus.gov.br/dissemin/publicos/IBGE/PopSVS/"
+    antigo_url <- "ftp://ftp.datasus.gov.br/dissemin/publicos/IBGE/PopSVS/"
+     }
+    else if(information_system == "SIH-RD"){
     # Available dates
     atual_url <- "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/"
     antigo_url <- "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/199201_200712/Dados/"
